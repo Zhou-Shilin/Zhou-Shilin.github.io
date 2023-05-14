@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Minecraft Rcon指南：轻松使用脚本控制你的服务器</title>
+    <url>/article/Minecraft-Rcon/</url>
+    <content><![CDATA[<h1 id="启用Minecraft-RCON"><a href="#启用Minecraft-RCON" class="headerlink" title="启用Minecraft RCON"></a>启用Minecraft RCON</h1><p>Minecraft RCON 是一种远程控制协议，用于与运行 Minecraft 服务器的进程进行通信。<br>RCON 允许您远程执行命令，例如启动&#x2F;停止服务器、更改游戏设置和与玩家进行交互。  </p>
+<p>要使用 Minecraft RCON，您需要启用服务器配置文件中的 RCON 功能。您需要指定一个 RCON 密码和端口号。这些设置在服务器的 server.properties 文件中进行配置。<br><img  
+                     lazyload
+                     alt="image"
+                     data-src="/article/Minecraft-Rcon/config.png"
+                      alt="config"
+                ></p>
+<h1 id="使用-Python-连接-Minecraft-RCON"><a href="#使用-Python-连接-Minecraft-RCON" class="headerlink" title="使用 Python 连接 Minecraft RCON"></a>使用 Python 连接 Minecraft RCON</h1><p>您可以使用 Python 连接 Minecraft RCON，以编写自定义脚本并与 Minecraft 服务器进行交互。要连接 Minecraft RCON，您需要使用一个 Python RCON 库，例如 mcrcon。  </p>
+<p>您可以使用 pip 命令安装 mcrcon 库：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install mcrcon</span><br></pre></td></tr></table></figure>
+<p>然后，您可以使用以下代码示例来连接到 Minecraft RCON：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> mcrcon</span><br><span class="line"></span><br><span class="line">host = <span class="string">&#x27;your_server_ip&#x27;</span></span><br><span class="line">port = <span class="number">25575</span></span><br><span class="line">password = <span class="string">&#x27;your_rcon_password&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建 RCON 连接</span></span><br><span class="line">rcon = mcrcon.MCRcon(host, password, port)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 连接到服务器</span></span><br><span class="line">rcon.connect()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行 RCON 命令</span></span><br><span class="line">response = rcon.command(<span class="string">&#x27;say Hello, everyone!&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出命令响应</span></span><br><span class="line"><span class="built_in">print</span>(response)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭 RCON 连接</span></span><br><span class="line">rcon.disconnect()</span><br></pre></td></tr></table></figure>
+<p>在上面的示例中，您需要将 your_server_ip 和 your_rcon_password 替换为您的服务器 IP 地址和 RCON 密码。然后，使用 rcon.connect() 方法连接到服务器，使用 rcon.command() 方法执行 RCON 命令，并使用 rcon.disconnect() 方法关闭连接。</p>
+<h1 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h1><h2 id="定时清除掉落物"><a href="#定时清除掉落物" class="headerlink" title="定时清除掉落物"></a>定时清除掉落物</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> mcrcon</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">host = <span class="string">&#x27;your_server_ip&#x27;</span></span><br><span class="line">port = <span class="number">25575</span></span><br><span class="line">password = <span class="string">&#x27;your_rcon_password&#x27;</span></span><br><span class="line"></span><br><span class="line">rcon = mcrcon.MCRcon(host, password, port)</span><br><span class="line">rcon.connect()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 清除间隔时间（秒）</span></span><br><span class="line">clear_interval = <span class="number">1800</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="comment"># 执行清除命令</span></span><br><span class="line">    rcon.command(<span class="string">&#x27;kill @e[type=item]&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 等待清除间隔时间</span></span><br><span class="line">    time.sleep(clear_interval)</span><br><span class="line"></span><br><span class="line">rcon.disconnect()</span><br></pre></td></tr></table></figure>
+<h2 id="定时发布公告"><a href="#定时发布公告" class="headerlink" title="定时发布公告"></a>定时发布公告</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> mcrcon</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">host = <span class="string">&#x27;your_server_ip&#x27;</span></span><br><span class="line">port = <span class="number">25575</span></span><br><span class="line">password = <span class="string">&#x27;your_rcon_password&#x27;</span></span><br><span class="line"></span><br><span class="line">rcon = mcrcon.MCRcon(host, password, port)</span><br><span class="line">rcon.connect()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 公告间隔时间（秒）</span></span><br><span class="line">message_interval = <span class="number">3600</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 公告列表</span></span><br><span class="line">messages = [</span><br><span class="line">    <span class="string">&#x27;欢迎来到Hypiworld机械动力服务器！&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;请遵守服务器规则，享受游戏！&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;如果您有任何问题，请联系管理员。&#x27;</span>,</span><br><span class="line">	<span class="string">&#x27;服务器QQ群: 640159882&#x27;</span>,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 当前公告索引</span></span><br><span class="line">current_index = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="comment"># 发送当前公告</span></span><br><span class="line">    rcon.command(<span class="string">f&#x27;say <span class="subst">&#123;messages[current_index]&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 更新当前公告索引</span></span><br><span class="line">    current_index = (current_index + <span class="number">1</span>) % <span class="built_in">len</span>(messages)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 等待公告间隔时间</span></span><br><span class="line">    time.sleep(message_interval)</span><br><span class="line"></span><br><span class="line">rcon.disconnect()</span><br></pre></td></tr></table></figure>
+<h2 id="玩家数量变化图"><a href="#玩家数量变化图" class="headerlink" title="玩家数量变化图"></a>玩家数量变化图</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> mcrcon</span><br><span class="line"></span><br><span class="line">// 注意：你需要创建一个新的文本文件data.txt用于记录数据，以及另一个Python程序用于制作图表。</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">host = <span class="string">&#x27;your_server_ip&#x27;</span></span><br><span class="line">port = <span class="number">25575</span></span><br><span class="line">password = <span class="string">&#x27;your_rcon_password&#x27;</span></span><br><span class="line"></span><br><span class="line">rcon = mcrcon.MCRcon(host, password, port)</span><br><span class="line">rcon.connect()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 监控间隔时间（秒）</span></span><br><span class="line">monitor_interval = <span class="number">3600</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="comment"># 获取当前在线玩家数量</span></span><br><span class="line">    players = rcon.command(<span class="string">&#x27;list&#x27;</span>)</span><br><span class="line">    player_count = <span class="built_in">len</span>(players.split(<span class="string">&#x27;:&#x27;</span>)[<span class="number">1</span>].strip().split(<span class="string">&#x27;, &#x27;</span>))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 将玩家数量写入文件</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;data.txt&#x27;</span>, <span class="string">&#x27;a&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        current_time = time.strftime(<span class="string">&#x27;%Y-%m-%d %H:%M:%S&#x27;</span>, time.localtime())</span><br><span class="line">        f.write(<span class="string">f&#x27;<span class="subst">&#123;current_time&#125;</span>\t<span class="subst">&#123;player_count&#125;</span>\n&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 等待监控间隔时间</span></span><br><span class="line">    time.sleep(monitor_interval)</span><br><span class="line"></span><br><span class="line">rcon.disconnect()</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>Minecraft, Code</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>a-Shell测评：iOS命令行软件</title>
+    <url>/article/a-shell/</url>
+    <content><![CDATA[<p>最近发现了一款iOS命令行工具，内置Python3、pip、Tex、lua、vim、js、c、c++、pkg等等，甚至支持将工作区域设为沙盒外文件。最重要是的，其已在<a href="%5Bhttps://apps.apple.com/app/a-shell/id1473805438%5D(https://apps.apple.com/app/a-shell/id1473805438)">App Store</a>上架，<strong>开源免费</strong>无广告！</p>
+<h1 id="体验"><a href="#体验" class="headerlink" title="体验"></a>体验</h1><p>打开软件，我先按照习惯输入了<code>$ help</code>。</p>
+<p>输出结果如下：</p>
+<blockquote>
+<p>$ help</p>
+<p>a-Shell is a terminal emulator for iOS, with many Unix commands: ls,<br>pwd, tar, mkdir, grep….</p>
+<p>a-Shell can do most of the things you can do in a terminal, locally on<br>your iPhone or iPad. You can redirect command output to a file with<br>“&gt;” (append with “&gt;&gt;”) and you can pipe commands with “|”.</p>
+<ul>
+<li><p>customize appearance with config</p>
+</li>
+<li><p>pickFolder: open, bookmark and access a directory anywhere (another app, iCloud, WorkingCopy, file providers…)</p>
+</li>
+<li><p>newWindow: open a new window</p>
+</li>
+<li><p>exit: close the current window</p>
+</li>
+<li><p>All your files, including configuration files (.bashrc, .profile, .ssh…) are in ~&#x2F;Documents&#x2F;</p>
+</li>
+<li><p>Files created by Shortcuts are in ~shortcuts&#x2F;</p>
+</li>
+<li><p>a-Shell executes the ~&#x2F;Documents&#x2F;.profile and ~&#x2F;Documents&#x2F;.bashrc files for each new window</p>
+</li>
+<li><p>Single-finger swipes move the cursor or scroll, two-finger swipes send keyboard input (up, down, escape, tab). “man gestures” for more.</p>
+</li>
+<li><p>Edit files with vim and pico.</p>
+</li>
+<li><p>Transfer files with curl, tar, scp and sftp.</p>
+</li>
+<li><p>Clone repositories and do version control with lg2 (similar to git)</p>
+</li>
+<li><p>Install more commands with “pkg”</p>
+</li>
+<li><p>Process files with python3, lua, jsc, clang, pdflatex, lualatex.</p>
+</li>
+<li><p>Open files in other apps with open, play sound and video with play, preview with view.</p>
+</li>
+<li><p>For network queries: nslookup, ping, host, whois, ifconfig…</p>
+</li>
+</ul>
+<p>To install TeX, just type any tex command and follow the instructions<br>(same with luatex).</p>
+<ul>
+<li><p>bookmark the current directory with “bookmark <name>“ and access it later with “cd ~name” or “jump <name>“.</p>
+</li>
+<li><p>showmarks: show current list of bookmarks</p>
+</li>
+<li><p>renamemark, deletemark: change list of bookmarks</p>
+</li>
+</ul>
+<p>Support: e-mail (<a class="link"   href="mailto:&#x61;&#110;&#111;&#116;&#104;&#101;&#114;&#x5f;&#115;&#104;&#101;&#108;&#x6c;&#64;&#x69;&#x63;&#x6c;&#111;&#x75;&#x64;&#x2e;&#x63;&#x6f;&#109;" >&#x61;&#110;&#111;&#116;&#104;&#101;&#114;&#x5f;&#115;&#104;&#101;&#108;&#x6c;&#64;&#x69;&#x63;&#x6c;&#111;&#x75;&#x64;&#x2e;&#x63;&#x6f;&#109;<i class="fas fa-external-link-alt"></i></a>), Twitter (@a_Shell_iOS),<br>github (<a class="link"   href="https://github.com/holzschu/a-shell/issues" >https://github.com/holzschu/a-shell/issues<i class="fas fa-external-link-alt"></i></a>) and Discord<br>(<a class="link"   href="https://discord.gg/cvYnZm69Gy" >https://discord.gg/cvYnZm69Gy<i class="fas fa-external-link-alt"></i></a>).</p>
+<p>For a full list of commands, type help -l</p>
+</blockquote>
+<p>可以看到，a-Shell支持多窗口协作、沙盒外文件操作、执行Python、Lua、C、C++等编程语言、使用Vim编辑文件、大部分Unix指令（如nslookup、ls、ping等等），甚至支持pkg包管理。  </p>
+<p>我先输入了<code>$ pickFolder</code>指令，选择了一个沙盒外的文件夹 <code>我的iPad/PythonShell</code>，然后使用<code>touch</code>新建了一个文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[~/Documents]$ pickFolder</span><br><span class="line">[~PythonShell]$ ls</span><br><span class="line">test.txt</span><br><span class="line">[~PythonShell]$ touch rcon.py</span><br><span class="line">[~PythonShell]$ ls</span><br><span class="line">test.txt rcon.py</span><br></pre></td></tr></table></figure>
+<p>然后再使用内置的vim编辑这个文件：<br><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/Zhou-Shilin/picx-images-hosting@master/20230424/IMG_7113.4qz01wgsrszk.gif"
+                      alt="gif"
+                ><br>可以看到它甚至支持语法高亮。</p>
+<p>然后我再使用内置的python运行了这个程序：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[~PythonShell]$ pip install mcron</span><br><span class="line">...</span><br><span class="line">[~PythonShell]$ python rcon.py</span><br><span class="line">BaimoRconConsloe 1.0</span><br><span class="line">&gt;&gt; a</span><br><span class="line">1</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>成功运行！</p>
+<h1 id="支持"><a href="#支持" class="headerlink" title="支持"></a>支持</h1><p>Discord: <a class="link"   href="https://discord.gg/rj2PYd3xrZ" >https://discord.gg/rj2PYd3xrZ<i class="fas fa-external-link-alt"></i></a></p>
+<p>GitHub: <a class="link"   href="https://github.com/holzschu/a-shell" >https://github.com/holzschu/a-shell<i class="fas fa-external-link-alt"></i></a></p>
+<p>Twitter: <a class="link"   href="https://twitter.com/a_shell_ios" >https://twitter.com/a_shell_ios<i class="fas fa-external-link-alt"></i></a></p>
+]]></content>
+      <tags>
+        <tag>BTesting</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>开源工具站汇总</title>
+    <url>/article/good-sites/</url>
+    <content><![CDATA[<p>以下都是本人用过的好用、免费、开源的各类工具站，它们通常不会排在搜索引擎结果的前列，所以这里汇总一下。  </p>
+<h1 id="网站访问量计数器-Hits"><a href="#网站访问量计数器-Hits" class="headerlink" title="网站访问量计数器 Hits"></a>网站访问量计数器 Hits</h1><p>网址：<a class="link"   href="https://hits.sh/" >https://hits.sh<i class="fas fa-external-link-alt"></i></a><br>效果：<img  
+                     lazyload
+                     alt="image"
+                     data-src="https://hits.sh/hits.sh.svg"
+                      alt="加载中…" title="Hits.sh的访问量"
+                ><br>开源地址：<a class="link"   href="https://github.com/silentsoft/hits" >https://github.com/silentsoft/hits<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="Markdown在线编辑器-StackEdit"><a href="#Markdown在线编辑器-StackEdit" class="headerlink" title="Markdown在线编辑器 StackEdit"></a>Markdown在线编辑器 StackEdit</h1><p>网址：<a class="link"   href="https://stackedit.cn/app" >https://stackedit.cn/app<i class="fas fa-external-link-alt"></i></a><br>效果：<img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/Zhou-Shilin/picx-images-hosting@master/20230410/265F14F4-D978-4AFB-8BD7-175CD4992D4B.7fgikxu0c64g.webp"
+                      alt="加载中…"
+                ><br>开源地址：<a class="link"   href="https://github.com/benweet/" >https://github.com/benweet/<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="图床-PicX"><a href="#图床-PicX" class="headerlink" title="图床 PicX"></a>图床 PicX</h1><p>网址：<a class="link"   href="https://picx.xpoet.cn/" >https://picx.xpoet.cn/<i class="fas fa-external-link-alt"></i></a><br>效果：上面StackEdit的效果图就是上传在图床上的<br>开源地址：<a class="link"   href="https://github.com/XPoet/picx" >https://github.com/XPoet/picx<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="更好的ChatGPT网页客户端-BetterGPT"><a href="#更好的ChatGPT网页客户端-BetterGPT" class="headerlink" title="更好的ChatGPT网页客户端 BetterGPT"></a>更好的ChatGPT网页客户端 BetterGPT</h1><p>网址：<a class="link"   href="https://bettergpt.chat/" >https://bettergpt.chat<i class="fas fa-external-link-alt"></i></a><br>效果：<img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/Zhou-Shilin/picx-images-hosting@master/20230410/BC122C55-BCCF-40C2-B6DD-192F24246592.7iuwnd442zgg.webp"
+                      alt="加载中…"
+                ><br>开源地址：<a class="link"   href="https://github.com/ztjhz/BetterChatGPT" >https://github.com/ztjhz/BetterChatGPT<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="短链接-Dub"><a href="#短链接-Dub" class="headerlink" title="短链接 Dub"></a>短链接 Dub</h1><p>网址：<a class="link"   href="https://dub.sh/" >https://dub.sh<i class="fas fa-external-link-alt"></i></a><br>效果：&lt;dub.sh&#x2F;githuber&gt;<br>开源地址：<a class="link"   href="https://github.com/steven-tey/dub" >https://github.com/steven-tey/dub<i class="fas fa-external-link-alt"></i></a></p>
+<p>持续更新中…</p>
+]]></content>
+      <tags>
+        <tag>BTesting</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Sidestore安装教程：免越狱iOS App侧载工具</title>
+    <url>/article/sidestore/</url>
+    <content><![CDATA[<p>iOS免越狱App侧载工具有很多，比如牛蛙助手、AltStore等等。但是牛蛙助手广告很多而且不开源，容易把Pojavlauncher签报废；Altstore每次安装都需要电脑。而SideStore开源免费，基于AltStore，无需电脑即可食用。</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>将Sidestore安装到您的设备上的过程需要使用一次计算机。在安装之后，可以无限制地刷新Sidestore、侧载App，而无需使用计算机。以下是安装Sidestore的步骤：</p>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><ol>
+<li>电脑（Windows，Mac，Linux）：您需要个人电脑来安装Sidestore。</li>
+<li>iOS设备：您的iOS设备必须运行iOS &#x2F; iPadOS 14+。</li>
+<li>Apple ID帐户：如果您有一台iOS设备，那您一定会有一个Apple ID账户。</li>
+<li>开发者模式：如果您使用的是iOS16或更高，您必须在iOS安全设置中启用“开发者模式”。此外，在使用您的Apple ID安装后，您必须信任您的个人开发人员证书。</li>
+<li>Wireguard VPN应用程序：您将需要Wireguard VPN应用程序，并使用提供的Wireguard配置并将其共享到Wireguard应用程序中。</li>
+<li>SideStore.ipa：可在 <a class="link"   href="https://sidestore.io/" >https://sidestore.io<i class="fas fa-external-link-alt"></i></a> 上获得。</li>
+</ol>
+<h2 id="MACOS"><a href="#MACOS" class="headerlink" title="MACOS"></a>MACOS</h2><ol>
+<li>从<a class="link"   href="https://sidestore.io/" >https://sidestore.io/<i class="fas fa-external-link-alt"></i></a> 下载并安装SideServer。</li>
+<li>将您的设备连接到计算机。</li>
+<li>从菜单栏中单击SideServer图标，然后选择“安装Sidestore”。</li>
+<li>然后，按照说明操作，直到SideServer确认已安装Sidestore。</li>
+<li>转到您的设备上的“设置”，转到“常规”下的“VPN和设备管理”，并批准带有您的Apple ID电子邮件的配置文件。<br>9.打开Sidestore并在应用程序中使用您的Apple ID登录。</li>
+</ol>
+<h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><p>见<a class="link"   href="https://wiki.sidestore.io/" >https://wiki.sidestore.io/<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="配对"><a href="#配对" class="headerlink" title="配对"></a>配对</h1><p>使用Jitterbugpair（而不是Jitterbug应用程序）允许我们为程序创建配对文件，例如Sidestore与您的设备通信，这是使用Sidestore所必需的，否则它将无法正常工作（Windows需要iTunes）。如果您有适用于MacOS，Windows，Linux等的SideServer，则不适用于您，因为SideServer在安装过程中会自动配对。<br>解压缩Jitterbugpair程序zip文件。将您的iDevice插入计算机，iDevice需要在主屏幕上，并执行程序。（您的iDevice可能会被要求信任此计算机，只需信任它即可成为配对过程的一部分。）配对后，您将获得一个以.mobiledevicepairing结尾的文件。然后，您可以通过iTunes或其他传输方式将其传输到您的iDevice。通过云存储传输可能会有文件名不一致的问题（最常见的是变成.txt），因此请注意。还可以将扩展名更改为.plist，以支持旧版Sidestore版本（例如0.1.1）。Windows用户可能需要在命令提示符或PowerShell窗口中执行程序，因为有时无法通过双击.exe程序打开。您只需在文件资源管理器中进入jitterbugpair文件夹所在的文件夹，在文件位置的顶部栏中单击空白处，然后键入PowerShell，它应该会打开一个名为PowerShell的蓝色窗口。在其中，您只需键入.&#x2F;jitterbugpair.exe并单击输入，同时您的iDevice已插入，配对过程应该开始！</p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>打开SideStore，导入配对文件后即可侧载。</p>
+]]></content>
+  </entry>
+</search>
