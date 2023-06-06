@@ -20,7 +20,8 @@
 <h2 id="定时发布公告"><a href="#定时发布公告" class="headerlink" title="定时发布公告"></a>定时发布公告</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> mcrcon</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">host = <span class="string">&#x27;your_server_ip&#x27;</span></span><br><span class="line">port = <span class="number">25575</span></span><br><span class="line">password = <span class="string">&#x27;your_rcon_password&#x27;</span></span><br><span class="line"></span><br><span class="line">rcon = mcrcon.MCRcon(host, password, port)</span><br><span class="line">rcon.connect()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 公告间隔时间（秒）</span></span><br><span class="line">message_interval = <span class="number">3600</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 公告列表</span></span><br><span class="line">messages = [</span><br><span class="line">    <span class="string">&#x27;欢迎来到Hypiworld机械动力服务器！&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;请遵守服务器规则，享受游戏！&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;如果您有任何问题，请联系管理员。&#x27;</span>,</span><br><span class="line">	<span class="string">&#x27;服务器QQ群: 640159882&#x27;</span>,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 当前公告索引</span></span><br><span class="line">current_index = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="comment"># 发送当前公告</span></span><br><span class="line">    rcon.command(<span class="string">f&#x27;say <span class="subst">&#123;messages[current_index]&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 更新当前公告索引</span></span><br><span class="line">    current_index = (current_index + <span class="number">1</span>) % <span class="built_in">len</span>(messages)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 等待公告间隔时间</span></span><br><span class="line">    time.sleep(message_interval)</span><br><span class="line"></span><br><span class="line">rcon.disconnect()</span><br></pre></td></tr></table></figure>
 <h2 id="玩家数量变化图"><a href="#玩家数量变化图" class="headerlink" title="玩家数量变化图"></a>玩家数量变化图</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> mcrcon</span><br><span class="line"></span><br><span class="line">// 注意：你需要创建一个新的文本文件data.txt用于记录数据，以及另一个Python程序用于制作图表。</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">host = <span class="string">&#x27;your_server_ip&#x27;</span></span><br><span class="line">port = <span class="number">25575</span></span><br><span class="line">password = <span class="string">&#x27;your_rcon_password&#x27;</span></span><br><span class="line"></span><br><span class="line">rcon = mcrcon.MCRcon(host, password, port)</span><br><span class="line">rcon.connect()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 监控间隔时间（秒）</span></span><br><span class="line">monitor_interval = <span class="number">3600</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="comment"># 获取当前在线玩家数量</span></span><br><span class="line">    players = rcon.command(<span class="string">&#x27;list&#x27;</span>)</span><br><span class="line">    player_count = <span class="built_in">len</span>(players.split(<span class="string">&#x27;:&#x27;</span>)[<span class="number">1</span>].strip().split(<span class="string">&#x27;, &#x27;</span>))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 将玩家数量写入文件</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;data.txt&#x27;</span>, <span class="string">&#x27;a&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        current_time = time.strftime(<span class="string">&#x27;%Y-%m-%d %H:%M:%S&#x27;</span>, time.localtime())</span><br><span class="line">        f.write(<span class="string">f&#x27;<span class="subst">&#123;current_time&#125;</span>\t<span class="subst">&#123;player_count&#125;</span>\n&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 等待监控间隔时间</span></span><br><span class="line">    time.sleep(monitor_interval)</span><br><span class="line"></span><br><span class="line">rcon.disconnect()</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
-        <tag>Minecraft, Code</tag>
+        <tag>Minecraft</tag>
+        <tag>Code</tag>
       </tags>
   </entry>
   <entry>
@@ -74,7 +75,7 @@
 <li><p>renamemark, deletemark: change list of bookmarks</p>
 </li>
 </ul>
-<p>Support: e-mail (<a class="link"   href="mailto:&#x61;&#110;&#111;&#116;&#104;&#101;&#114;&#x5f;&#115;&#104;&#101;&#108;&#x6c;&#64;&#x69;&#x63;&#x6c;&#111;&#x75;&#x64;&#x2e;&#x63;&#x6f;&#109;" >&#x61;&#110;&#111;&#116;&#104;&#101;&#114;&#x5f;&#115;&#104;&#101;&#108;&#x6c;&#64;&#x69;&#x63;&#x6c;&#111;&#x75;&#x64;&#x2e;&#x63;&#x6f;&#109;<i class="fas fa-external-link-alt"></i></a>), Twitter (@a_Shell_iOS),<br>github (<a class="link"   href="https://github.com/holzschu/a-shell/issues" >https://github.com/holzschu/a-shell/issues<i class="fas fa-external-link-alt"></i></a>) and Discord<br>(<a class="link"   href="https://discord.gg/cvYnZm69Gy" >https://discord.gg/cvYnZm69Gy<i class="fas fa-external-link-alt"></i></a>).</p>
+<p>Support: e-mail (<a class="link"   href="mailto:&#x61;&#110;&#111;&#x74;&#104;&#x65;&#114;&#95;&#x73;&#104;&#101;&#x6c;&#108;&#x40;&#x69;&#99;&#108;&#x6f;&#x75;&#100;&#x2e;&#99;&#111;&#109;" >&#x61;&#110;&#111;&#x74;&#104;&#x65;&#114;&#95;&#x73;&#104;&#101;&#x6c;&#108;&#x40;&#x69;&#99;&#108;&#x6f;&#x75;&#100;&#x2e;&#99;&#111;&#109;<i class="fas fa-external-link-alt"></i></a>), Twitter (@a_Shell_iOS),<br>github (<a class="link"   href="https://github.com/holzschu/a-shell/issues" >https://github.com/holzschu/a-shell/issues<i class="fas fa-external-link-alt"></i></a>) and Discord<br>(<a class="link"   href="https://discord.gg/cvYnZm69Gy" >https://discord.gg/cvYnZm69Gy<i class="fas fa-external-link-alt"></i></a>).</p>
 <p>For a full list of commands, type help -l</p>
 </blockquote>
 <p>可以看到，a-Shell支持多窗口协作、沙盒外文件操作、执行Python、Lua、C、C++等编程语言、使用Vim编辑文件、大部分Unix指令（如nslookup、ls、ping等等），甚至支持pkg包管理。  </p>
@@ -95,6 +96,7 @@
 ]]></content>
       <tags>
         <tag>BTesting</tag>
+        <tag>iOS</tag>
       </tags>
   </entry>
   <entry>
@@ -128,7 +130,7 @@
       </tags>
   </entry>
   <entry>
-    <title>Sidestore安装教程：免越狱iOS App侧载工具</title>
+    <title>Sidestore：免越狱iOS App侧载工具</title>
     <url>/article/sidestore/</url>
     <content><![CDATA[<p>iOS免越狱App侧载工具有很多，比如牛蛙助手、AltStore等等。但是牛蛙助手广告很多而且不开源，容易把Pojavlauncher签报废；Altstore每次安装都需要电脑。而SideStore开源免费，基于AltStore，无需电脑即可食用。</p>
 <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>将Sidestore安装到您的设备上的过程需要使用一次计算机。在安装之后，可以无限制地刷新Sidestore、侧载App，而无需使用计算机。以下是安装Sidestore的步骤：</p>
@@ -151,6 +153,10 @@
 <h1 id="配对"><a href="#配对" class="headerlink" title="配对"></a>配对</h1><p>使用Jitterbugpair（而不是Jitterbug应用程序）允许我们为程序创建配对文件，例如Sidestore与您的设备通信，这是使用Sidestore所必需的，否则它将无法正常工作（Windows需要iTunes）。如果您有适用于MacOS，Windows，Linux等的SideServer，则不适用于您，因为SideServer在安装过程中会自动配对。<br>解压缩Jitterbugpair程序zip文件。将您的iDevice插入计算机，iDevice需要在主屏幕上，并执行程序。（您的iDevice可能会被要求信任此计算机，只需信任它即可成为配对过程的一部分。）配对后，您将获得一个以.mobiledevicepairing结尾的文件。然后，您可以通过iTunes或其他传输方式将其传输到您的iDevice。通过云存储传输可能会有文件名不一致的问题（最常见的是变成.txt），因此请注意。还可以将扩展名更改为.plist，以支持旧版Sidestore版本（例如0.1.1）。Windows用户可能需要在命令提示符或PowerShell窗口中执行程序，因为有时无法通过双击.exe程序打开。您只需在文件资源管理器中进入jitterbugpair文件夹所在的文件夹，在文件位置的顶部栏中单击空白处，然后键入PowerShell，它应该会打开一个名为PowerShell的蓝色窗口。在其中，您只需键入.&#x2F;jitterbugpair.exe并单击输入，同时您的iDevice已插入，配对过程应该开始！</p>
 <h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>打开SideStore，导入配对文件后即可侧载。</p>
 ]]></content>
+      <tags>
+        <tag>BTesting</tag>
+        <tag>iOS</tag>
+      </tags>
   </entry>
   <entry>
     <title>Pojavlauncher：手机上的Minecraft Java版启动器</title>
@@ -188,7 +194,8 @@
 <h1 id="使用体验"><a href="#使用体验" class="headerlink" title="使用体验"></a>使用体验</h1><p>Pojavlauncher的表现十分惊人，不仅支持安装Forge, Fabric, Quilt等等模组加载器和光影，还能自定义按键。<br>比如这是我使用的按键配置文件，你可以点<a href="baimo.json">我</a>下载。<br>不过也有一些Bug，在<a class="link"   href="https://github.com/PojavLauncherTeam/PojavLauncher_iOS/issues" >GitHub<i class="fas fa-external-link-alt"></i></a>提交Issue一般一周后才会回复，但是一般遇到漏洞不会<code>Not Planned</code>。</p>
 ]]></content>
       <tags>
-        <tag>Minecraft, BTesting</tag>
+        <tag>BTesting</tag>
+        <tag>Minecraft</tag>
       </tags>
   </entry>
 </search>
