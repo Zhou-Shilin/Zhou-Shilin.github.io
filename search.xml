@@ -153,8 +153,39 @@
 ]]></content>
   </entry>
   <entry>
-    <title>page</title>
-    <url>/article/page/</url>
-    <content><![CDATA[]]></content>
+    <title></title>
+    <url>/article/pojav/</url>
+    <content><![CDATA[<h1 id="Pojavlauncher：手机上的Minecraft-Java版启动器"><a href="#Pojavlauncher：手机上的Minecraft-Java版启动器" class="headerlink" title="Pojavlauncher：手机上的Minecraft Java版启动器"></a>Pojavlauncher：手机上的Minecraft Java版启动器</h1><blockquote>
+<p>你想在你的iOS&#x2F;安卓设备上运行Minecraft Java版吗？快来试试Pojavlauncher吧！</p>
+</blockquote>
+<p><a class="link"   href="https://github.com/PojavLauncherTeam/PojavLauncher_iOS" >PojavLauncher<i class="fas fa-external-link-alt"></i></a>是一个适用于 Android、iOS 和 iPadOS 的 Minecraft：Java 版启动器，它有以下亮点：</p>
+<ul>
+<li>支持大多数Minecraft版本，从远古Alpha测试版到最新的快照。</li>
+<li>支持 Forge、Fabric、OptiFine 和 Quilt安装模组</li>
+<li>包括可定制的屏幕控制、键盘和鼠标支持以及游戏控制器支持。</li>
+<li>针对越狱和 TrollStore 设备进行了优化，以启用更好的功能。</li>
+<li>Microsoft 帐户和演示模式支持登录 Minecraft。</li>
+<li>…以及更多！</li>
+</ul>
+<h1 id="食用教程"><a href="#食用教程" class="headerlink" title="食用教程"></a>食用教程</h1><p>在<a class="link"   href="https://github.com/PojavLauncherTeam/PojavLauncher_iOS/actions" >这里<i class="fas fa-external-link-alt"></i></a>下载最新的ipa包，使用<a class="link"   href="https://sidestore.io/" >SideStore<i class="fas fa-external-link-alt"></i></a>等签名工具签名安装。<strong>请不要使用牛蛙助手签Pojavlauncher，会把Java环境签废！</strong><br><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.staticaly.com/gh/Zhou-Shilin/picx-images-hosting@master/20230606/230DA238-5F5F-4E31-B0E7-ECA60F1A3DC5.3au6g50p4z5s.webp"
+                      alt="SideStore截图"
+                ><br>然后长按Pojavlauncher，选择<code>Enable JIT</code>打开程序。<br><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://raw.githubusercontent.com/Zhou-Shilin/picx-images-hosting/master/20230606/CC3EDF2C-27C9-4614-B514-73A1A769EEDA.gif"
+                      alt="Enable JIT"
+                ></p>
+<h1 id="避坑指南"><a href="#避坑指南" class="headerlink" title="避坑指南"></a>避坑指南</h1><p>在使用Pojav的过程中，还是有很多坑的。以下是我踩到的坑：</p>
+<ol>
+<li><strong>千万别用牛蛙助手签名</strong>，一般签几周就会把Java环境签废。这里强烈推荐<a class="link"   href="https://sidestore.io/" >SideStore<i class="fas fa-external-link-alt"></i></a>，开源免费，基于<a class="link"   href="https://altstore.io/" >AltStore<i class="fas fa-external-link-alt"></i></a>。</li>
+<li><strong>下载ipa的时候别去<a class="link"   href="https://github.com/PojavLauncherTeam/PojavLauncher_iOS/releases" >GitHub Release<i class="fas fa-external-link-alt"></i></a>，要去<a class="link"   href="https://github.com/PojavLauncherTeam/PojavLauncher_iOS/actions" >GitHub Actions<i class="fas fa-external-link-alt"></i></a>下载开发版</strong>。因为这个开发者不勤发布Release，上面的正式版一堆Bug（比如聊天栏打不出中文等），Actions里的开发版就都修复了。</li>
+<li><strong>Pojav没自动版本隔离</strong>，所有版本共用一个文件夹（mods等等都是公用的）。新建版本建议到<code>设置-启动器基础设置-游戏文件夹-新建</code>新建文件夹后再安装，防止模组版本错误。</li>
+<li>安装模组加载器后会黑屏，此时需要重启Pojav（重新打开的时候记得开JIT）。<strong>现在的版本还是未安装模组加载器的版本</strong>，你需要在版本选择界面多出的那一个<code>原版本名称-你的模组加载器-模组加载器版本</code>的新版本启动。</li>
+</ol>
+<h1 id="使用体验"><a href="#使用体验" class="headerlink" title="使用体验"></a>使用体验</h1><p>Pojavlauncher的表现十分惊人，不仅支持安装Forge, Fabric, Quilt等等模组加载器和光影，还能自定义按键。<br>比如这是我使用的按键配置文件，你可以点<a href="baimo.json">我</a>下载。<br>不过也有一些Bug，在<a class="link"   href="https://github.com/PojavLauncherTeam/PojavLauncher_iOS/issues" >GitHub<i class="fas fa-external-link-alt"></i></a>提交Issue一般一周后才会回复，但是一般遇到漏洞不会<code>Not Planned</code>。</p>
+]]></content>
   </entry>
 </search>
