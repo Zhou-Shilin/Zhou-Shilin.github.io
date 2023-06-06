@@ -153,9 +153,9 @@
 ]]></content>
   </entry>
   <entry>
-    <title></title>
+    <title>Pojavlauncher：手机上的Minecraft Java版启动器</title>
     <url>/article/pojav/</url>
-    <content><![CDATA[<h1 id="Pojavlauncher：手机上的Minecraft-Java版启动器"><a href="#Pojavlauncher：手机上的Minecraft-Java版启动器" class="headerlink" title="Pojavlauncher：手机上的Minecraft Java版启动器"></a>Pojavlauncher：手机上的Minecraft Java版启动器</h1><blockquote>
+    <content><![CDATA[<blockquote>
 <p>你想在你的iOS&#x2F;安卓设备上运行Minecraft Java版吗？快来试试Pojavlauncher吧！</p>
 </blockquote>
 <p><a class="link"   href="https://github.com/PojavLauncherTeam/PojavLauncher_iOS" >PojavLauncher<i class="fas fa-external-link-alt"></i></a>是一个适用于 Android、iOS 和 iPadOS 的 Minecraft：Java 版启动器，它有以下亮点：</p>
@@ -187,5 +187,8 @@
 </ol>
 <h1 id="使用体验"><a href="#使用体验" class="headerlink" title="使用体验"></a>使用体验</h1><p>Pojavlauncher的表现十分惊人，不仅支持安装Forge, Fabric, Quilt等等模组加载器和光影，还能自定义按键。<br>比如这是我使用的按键配置文件，你可以点<a href="baimo.json">我</a>下载。<br>不过也有一些Bug，在<a class="link"   href="https://github.com/PojavLauncherTeam/PojavLauncher_iOS/issues" >GitHub<i class="fas fa-external-link-alt"></i></a>提交Issue一般一周后才会回复，但是一般遇到漏洞不会<code>Not Planned</code>。</p>
 ]]></content>
+      <tags>
+        <tag>Minecraft, BTesting</tag>
+      </tags>
   </entry>
 </search>
