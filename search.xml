@@ -198,4 +198,47 @@
         <tag>Minecraft</tag>
       </tags>
   </entry>
+  <entry>
+    <title>超简明YAML教程：5分钟学会YAML基本语法</title>
+    <url>/article/yaml/</url>
+    <content><![CDATA[<p>YAML是一种用于序列化数据的格式，它的语法简洁易懂，可以方便地用于配置文件和数据交换。本篇教程将介绍YAML的基本语法和用法。</p>
+<h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><h3 id="缩进"><a href="#缩进" class="headerlink" title="缩进"></a>缩进</h3><p>YAML使用缩进来表示层次结构，每个层次使用两个空格或一个制表符进行缩进。例如：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">languages:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">Python</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">Java</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">Ruby</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="键值对"><a href="#键值对" class="headerlink" title="键值对"></a>键值对</h3><p>YAML使用冒号（:）来表示键值对，键和值之间使用一个空格分隔。例如：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">BaimoQilin</span></span><br><span class="line"><span class="attr">age:</span> <span class="number">114514</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>YAML使用井号（#）来表示注释，注释从该行的井号后面开始到该行结束。例如：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 我是一只普通的注释</span></span><br><span class="line"><span class="attr">key:</span> <span class="string">value</span> <span class="comment"># 我也是注释！！</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="常用用法"><a href="#常用用法" class="headerlink" title="常用用法"></a>常用用法</h2><h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><p>YAML可以表示复杂的对象结构，例如：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">person:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">BaimoQilin</span></span><br><span class="line">  <span class="attr">age:</span> <span class="number">114514</span></span><br><span class="line">  <span class="attr">accounts:</span></span><br><span class="line">    <span class="attr">bilibili:</span> <span class="string">白墨麒麟Hot</span></span><br><span class="line">    <span class="attr">ilidilid:</span> <span class="string">toH麟麒墨白</span></span><br></pre></td></tr></table></figure>
+
+<p>转换为JSON格式为：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;person&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;BaimoQilin&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;age&quot;</span><span class="punctuation">:</span> <span class="number">114514</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;accounts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;bilibili&quot;</span><span class="punctuation">:</span> <span class="string">&quot;白墨麒麟Hot&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;ilidilid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;toH麟麒墨白&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p>YAML可以表示列表，例如：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">todo:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">dianzan</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">toubi</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">shoucang</span></span><br></pre></td></tr></table></figure>
+
+<p>转换为JSON格式为：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;todo&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;dianzan&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;toubi&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;shoucang&quot;</span></span><br><span class="line">  <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="复杂列表"><a href="#复杂列表" class="headerlink" title="复杂列表"></a>复杂列表</h3><p>YAML也可以表示复杂的列表，例如：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">users:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">BaimoQilin</span></span><br><span class="line">    <span class="attr">age:</span> <span class="number">114514</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">niliQomiaB</span></span><br><span class="line">    <span class="attr">age:</span> <span class="number">415411</span></span><br></pre></td></tr></table></figure>
+
+<p>转换为JSON格式为：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;users&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;BaimoQilin&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;age&quot;</span><span class="punctuation">:</span> <span class="number">114514</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;niliQomiaB&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;age&quot;</span><span class="punctuation">:</span> <span class="number">415411</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="多行字符串"><a href="#多行字符串" class="headerlink" title="多行字符串"></a>多行字符串</h3><p>YAML可以表示多行字符串，例如：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">description:</span> <span class="string">|</span></span><br><span class="line"><span class="string">  多行</span></span><br><span class="line"><span class="string">  文本</span></span><br></pre></td></tr></table></figure>
+
+<p>转换为JSON格式为：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;description&quot;</span><span class="punctuation">:</span> <span class="string">&quot;多行\n文本\n&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文介绍了YAML的基本语法和用法，包括缩进、键值对、列表、多行字符串和注释。随着YAML在配置文件和数据交换方面的广泛应用，掌握YAML的语法将会对你的工作产生很大的帮助。</p>
+]]></content>
+      <tags>
+        <tag>code</tag>
+      </tags>
+  </entry>
 </search>
